@@ -242,7 +242,14 @@
     }
 
     /* Responsive tweaks */
-    @media (max-width: 480px) 
+    @media (max-width: 480px)
+
+.nav-links {
+  flex-wrap: wrap;
+  justify-content: center;
+  max-height: none !important;
+  overflow: visible !important;
+}
 {
   #about h1 {
     font-size: 1rem;
@@ -250,6 +257,10 @@
   #about h3 {
     font-size: 0.5rem;
     margin-top: 0.1rem;
+
+#about p {
+  font-size: 0.4rem;
+}
   }
 }
   </style>
