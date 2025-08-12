@@ -190,6 +190,20 @@
       transition: transform 0.2s ease;
       cursor: pointer;
     }
+    #graphic-design .gallery-item {
+  aspect-ratio: 1 / 1; /* square */
+  height: auto; /* let aspect-ratio control height */
+}
+
+#photography .gallery-item {
+  aspect-ratio: 4 / 5; /* portrait */
+  height: auto;
+}
+
+#motion .gallery-item {
+  aspect-ratio: 16 / 9; /* landscape */
+  height: auto;
+}
     .gallery-item:hover {
       transform: scale(1.2);
       box-shadow: 0 4px 10px rgb(0 0 0 / 0.15);
@@ -581,6 +595,7 @@
 
 </body>
 </html>
+
 
 
 
