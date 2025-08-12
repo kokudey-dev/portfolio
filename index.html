@@ -242,41 +242,55 @@
 
     /* Responsive tweaks */
 @media (max-width: 600px) {
+  /* Keep logo fixed on the left */
+  .logo {
+    position: sticky;
+    left: 0;
+    background-color: black; /* match your background */
+    padding-right: 8px;
+    z-index: 2; /* stay above scrolling items */
+  }
+
+  /* Make only the menu scrollable */
   nav {
-    overflow-x: auto; /* allow side scrolling */
-    white-space: nowrap; /* keep items in one line */
+    display: flex;
+    align-items: center;
   }
 
   nav ul {
-    display: inline-flex; /* force them into a scrollable row */
+    display: inline-flex;
     gap: 8px;
+    overflow-x: auto;
+    white-space: nowrap;
+    flex: 1;
   }
 
   nav ul li a {
-    font-size: 10px; /* smaller text for mobile */
+    font-size: 10px;
   }
 
   .nav-contact-icons a img {
     width: 8px;
     height: 8px;
   }
-}
-  #about h1 {
-    font-size: 1rem;
+
+  /* Header, subheader, and about paragraph */
+  header h1 {
+    font-size: 1.2rem;
+    text-align: center;
   }
-  #about h3 {
-    font-size: 0.5rem;
-    margin-top: 0.1rem;
-#about p {
-  font-size: 0.4rem;
-}
-.nav-links {
-  flex-wrap: wrap;
-  justify-content: center;
-  max-height: none !important;
-  overflow: visible !important;
-}
+
+  header h3 {
+    font-size: 0.8rem;
+    text-align: center;
   }
+
+  .about p {
+    font-size: 0.4rem;
+    text-align: center;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -520,6 +534,7 @@
 
 </body>
 </html>
+
 
 
 
