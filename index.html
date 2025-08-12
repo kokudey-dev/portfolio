@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Koku’s Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter&family=Open+Sans&family=Poppins&display=swap" rel="stylesheet" />
+  <style>
+    /* Reset & base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #f9f9f9;
+      color: #222;
+      scroll-behavior: smooth;
+      padding-top: 60px; /* spacing for fixed nav */
+    }
+
+    /* Navbar */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #222;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.5rem 1rem;
+      z-index: 1000;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      font-size: 10px; /* Nav links font size */
+      color: #ccc;
+    }
+    .nav-logo {
+      height: 45px;
+      width: auto;
+      object-fit: contain;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+    .nav-links a {
+      color: #ccc;
+      text-decoration: none;
+      font-weight: 600;
+      font-family: 'Poppins', sans-serif;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #fff;
+      border-bottom: 2px solid #007acc;
+    }
+    .nav-contact-icons {
+      display: flex;
+      gap: 0.7rem;
+      margin-left: 1.5rem;
+      align-items: center;
+    }
+    .nav-contact-icons a img {
+      width: 18px;
+      height: 18px;
+      filter: brightness(70%);
+      transition: filter 0.3s;
+      cursor: pointer;
+    }
+    .nav-contact-icons a img:hover {
+      filter: brightness(100%);
+    }
+    .nav-right {
+      display: flex;
+      align-items: center;
+    }
+
+    /* Section headings */
+    h2 {
+      border-bottom: 2px solid #222;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
+      font-family: 'Bebas Neue', cursive;
+      font-weight: 400;
+      font-size: 2rem;
+    }
+
+    /* Sections styling */
+    section {
+      max-width: 900px;
+      margin: 3rem auto;
+      padding: 0 1rem;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* About Section */
+    #about h1 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 2.5rem;
+      margin-bottom: 0.2rem;
+    }
+    #about p {
+      font-family: 'Open Sans', sans-serif;
+      font-style: italic;
+      color: #555;
+      font-size: 1.1rem;
+    }
+
+    /* Projects grid for Mobile Apps */
+    #mobile-apps .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+    .project-card {
+      background: white;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgb(0 0 0 / 0.1);
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s ease;
+      cursor: pointer;
+    }
+    .project-card:hover {
+      transform: scale(1.2);
+      box-shadow: 0 4px 12px rgb(0 0 0 / 0.15);
+      z-index: 10;
+    }
+    .project-thumb,
+.gallery-item {
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  background-size: cover;
+  background-position: center;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+    .project-card h3 {
+      margin: 0 0 0.3rem 0;
+      font-family: 'Poppins', sans-serif;
+    }
+    .project-card p {
+      margin: 0 0 0.6rem 0;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 0.95rem;
+      color: #444;
+      flex-grow: 1;
+    }
+
+    /* Graphic Design, Photography, Motion sections grid */
+    .gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+}
+    .gallery-item {
+      background: #eee;
+      border-radius: 6px;
+      height: 160px;
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 1px 4px rgb(0 0 0 / 0.1);
+      transition: transform 0.2s ease;
+      cursor: pointer;
+    }
+    .gallery-item:hover {
+      transform: scale(1.2);
+      box-shadow: 0 4px 10px rgb(0 0 0 / 0.15);
+      z-index: 10;
+    }
+
+    /* Skills list */
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-weight: 600;
+      font-family: 'Poppins', sans-serif;
+    }
+    .skill {
+      background: #222;
+      color: white;
+      padding: 0.4rem 0.8rem;
+      border-radius: 4px;
+      font-size: 0.9rem;
+    }
+
+    /* Tools list */
+    .tools-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+    }
+    .tool {
+      background: #444;
+      color: white;
+      padding: 0.4rem 0.8rem;
+      border-radius: 4px;
+      font-size: 0.9rem;
+    }
+
+    /* Certifications */
+    .certifications-list {
+      list-style: disc inside;
+      font-family: 'Open Sans', sans-serif;
+      color: #333;
+      padding-left: 0;
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 1rem;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+      color: #555;
+      margin-top: 3rem;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 480px) {
+      nav {
+        flex-wrap: wrap;
+        gap: 0.7rem;
+      }
+      .nav-links {
+        gap: 1rem;
+      }
+      #about h1 {
+        font-size: 2rem;
+      }
+      .gallery-item {
+        height: 120px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <img src="images/logo.png" alt="Koku Logo" class="nav-logo" />
+  <div class="nav-right">
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#mobile-apps">Mobile Apps</a>
+      <a href="#graphic-design">Graphic Design</a>
+      <a href="#photography">Photography</a>
+      <a href="#motion">Motion</a>
+    </div>
+    <div class="nav-contact-icons">
+      <a href="https://github.com/kokudey-dev" target="_blank" rel="noopener">
+        <img src="icons/github.png" alt="GitHub" />
+      </a>
+      <a href="https://linkedin.com/in/melvinkokudey" target="_blank" rel="noopener">
+        <img src="icons/linkedin.png" alt="LinkedIn" />
+      </a>
+      <a href="https://stackoverflow.com/users/yourid" target="_blank" rel="noopener">
+        <img src="icons/stackoverflow.png" alt="Stack Overflow" />
+      </a>
+      <a href="https://x.com/kokudey" target="_blank" rel="noopener">
+        <img src="icons/x.png" alt="X" />
+      </a>
+      <a href="mailto:kwakudey1@gmail.com">
+        <img src="icons/gmail.png" alt="Email" />
+      </a>
+    </div>
+  </div>
+</nav>
+
+<section id="about">
+  <h1>Koku</h1>
+  <p>Hi, I’m Koku Dey. I’m into coding, product management, and finding smart ways to solve real-life problems. Naturally curious, I’m always on the lookout for new ideas, fresh perspectives, and the latest buzz in crypto and tech. Learning’s my thing... even if it means stumbling a few times. I’m a big fan of Jesus, and when I’m not behind a screen, you’ll probably find me snapping photos or messing around with video shoots and edits right on my phone...</p>
+</section>
+
+<section id="mobile-apps">
+  <h2>Mobile Apps</h2>
+  <div class="projects">
+    <div class="project-card">
+      <div class="project-thumb" style="background-image: url('images/rice-again-placeholder.jpg');"></div>
+      <h3>Rice Again??</h3>
+      <p>A weightless meal prediction app that solves the problem of not thinking of what to eat but you still have the power to choose from 3 meals provided.</p>
+    </div>
+    <div class="project-card">
+      <div class="project-thumb" style="background-image: url('images/my-handyman-placeholder.jpg');"></div>
+      <h3>My Handyman</h3>
+      <p>Connects homeowners and developers with trusted handymen and service providers fast and hassle-free. Whether it’s fixing ventilation, AC systems, or general repairs, the app makes finding the right help simple—no more waiting, no more guessing. Just reliable service at your fingertips.</p>
+    </div>
+    <div class="project-card">
+      <div class="project-thumb" style="background-image: url('images/craftverse.jpg');"></div>
+      <h3>Craftverse</h3>
+      <p>Craftverse is a marketplace app where local weavers showcase and sell their handmade crafts, connecting them directly with buyers who appreciate authentic, skillfully made pieces.</p>
+    </div>
+  </div>
+</section>
+
+<section id="graphic-design">
+  <h2>Graphic Design</h2>
+  <div class="gallery-grid">
+    <div class="gallery-item" style="background-image: url('images/design1.jpg');" title="Design 1"></div>
+    <div class="gallery-item" style="background-image: url('images/design2.jpg');" title="Design 2"></div>
+    <div class="gallery-item" style="background-image: url('images/design3.jpg');" title="Design 3"></div>
+    <div class="gallery-item" style="background-image: url('images/design4.jpg');" title="Design 4"></div>
+    <div class="gallery-item" style="background-image: url('images/design5.jpg');" title="Design 5"></div>
+    <div class="gallery-item" style="background-image: url('images/design6.jpg');" title="Design 6"></div>
+    <div class="gallery-item" style="background-image: url('images/design7.jpg');" title="Design 7"></div>
+    <div class="gallery-item" style="background-image: url('images/design8.jpg');" title="Design 8"></div>
+    <div class="gallery-item" style="background-image: url('images/design9.jpg');" title="Design 9"></div>
+    <div class="gallery-item" style="background-image: url('images/design10.jpg');" title="Design 10"></div>
+    <div class="gallery-item" style="background-image: url('images/design11.jpg');" title="Design 11"></div>
+    <div class="gallery-item" style="background-image: url('images/design12.jpg');" title="Design 12"></div>
+    <div class="gallery-item" style="background-image: url('images/design13.jpg');" title="Design 13"></div>
+    <div class="gallery-item" style="background-image: url('images/design14.jpg');" title="Design 14"></div>
+    <div class="gallery-item" style="background-image: url('images/design15.jpg');" title="Design 15"></div>
+    <div class="gallery-item" style="background-image: url('images/design16.jpg');" title="Design 16"></div>
+    <div class="gallery-item" style="background-image: url('images/design17.jpg');" title="Design 17"></div>
+    <div class="gallery-item" style="background-image: url('images/design18.jpg');" title="Design 18"></div>
+    <div class="gallery-item" style="background-image: url('images/design19.jpg');" title="Design 19"></div>
+    <div class="gallery-item" style="background-image: url('images/design20.jpg');" title="Design 20"></div>
+    <div class="gallery-item" style="background-image: url('images/design21.jpg');" title="Design 21"></div>
+    <div class="gallery-item" style="background-image: url('images/design22.jpg');" title="Design 22"></div>
+    <div class="gallery-item" style="background-image: url('images/design23.jpg');" title="Design 23"></div>
+    <div class="gallery-item" style="background-image: url('images/design24.jpg');" title="Design 24"></div>
+    <div class="gallery-item" style="background-image: url('images/design25.jpg');" title="Design 25"></div>
+    <div class="gallery-item" style="background-image: url('images/design26.jpg');" title="Design 26"></div>
+    <div class="gallery-item" style="background-image: url('images/design27.jpg');" title="Design 27"></div>
+    <div class="gallery-item" style="background-image: url('images/design28.jpg');" title="Design 28"></div>
+    <div class="gallery-item" style="background-image: url('images/design29.jpg');" title="Design 29"></div>
+    <div class="gallery-item" style="background-image: url('images/design30.jpg');" title="Design 30"></div>
+    <div class="gallery-item" style="background-image: url('images/design31.jpg');" title="Design 31"></div>
+    <div class="gallery-item" style="background-image: url('images/design32.jpg');" title="Design 32"></div>
+    <div class="gallery-item" style="background-image: url('images/design33.jpg');" title="Design 33"></div>
+    <div class="gallery-item" style="background-image: url('images/design34.jpg');" title="Design 34"></div>
+    <div class="gallery-item" style="background-image: url('images/design35.jpg');" title="Design 35"></div>
+    <div class="gallery-item" style="background-image: url('images/design36.jpg');" title="Design 36"></div>
+    <div class="gallery-item" style="background-image: url('images/design37.jpg');" title="Design 37"></div>
+    <div class="gallery-item" style="background-image: url('images/design38.jpg');" title="Design 38"></div>
+    <div class="gallery-item" style="background-image: url('images/design39.jpg');" title="Design 39"></div>
+    <div class="gallery-item" style="background-image: url('images/design40.jpg');" title="Design 40"></div>
+  </div>
+</section>
+
+<section id="photography">
+  <h2>Photography</h2>
+  <div class="gallery-grid">
+    <div class="gallery-item" style="background-image: url('images/photo1.jpg');" title="Photo 1"></div>
+    <div class="gallery-item" style="background-image: url('images/photo2.jpg');" title="Photo 2"></div>
+    <div class="gallery-item" style="background-image: url('images/photo3.jpg');" title="Photo 3"></div>
+    <div class="gallery-item" style="background-image: url('images/photo4.jpg');" title="Photo 4"></div>
+    <div class="gallery-item" style="background-image: url('images/photo5.jpg');" title="Photo 5"></div>
+    <div class="gallery-item" style="background-image: url('images/photo6.jpg');" title="Photo 6"></div>
+    <div class="gallery-item" style="background-image: url('images/photo7.jpg');" title="Photo 7"></div>
+    <div class="gallery-item" style="background-image: url('images/photo8.jpg');" title="Photo 8"></div>
+    <div class="gallery-item" style="background-image: url('images/photo9.jpg');" title="Photo 9"></div>
+    <div class="gallery-item" style="background-image: url('images/photo10.jpg');" title="Photo 10"></div>
+    <div class="gallery-item" style="background-image: url('images/photo11.jpg');" title="Photo 11"></div>
+    <div class="gallery-item" style="background-image: url('images/photo12.jpg');" title="Photo 12"></div>
+    <div class="gallery-item" style="background-image: url('images/photo13.jpg');" title="Photo 13"></div>
+    <div class="gallery-item" style="background-image: url('images/photo14.jpg');" title="Photo 14"></div>
+    <div class="gallery-item" style="background-image: url('images/photo15.jpg');" title="Photo 15"></div>
+    <div class="gallery-item" style="background-image: url('images/photo16.jpg');" title="Photo 16"></div>
+    <div class="gallery-item" style="background-image: url('images/photo17.jpg');" title="Photo 17"></div>
+    <div class="gallery-item" style="background-image: url('images/photo18.jpg');" title="Photo 18"></div>
+    <div class="gallery-item" style="background-image: url('images/photo19.jpg');" title="Photo 19"></div>
+    <div class="gallery-item" style="background-image: url('images/photo20.jpg');" title="Photo 20"></div>
+  <div class="gallery-item" style="background-image: url('images/photo21.jpg');" title="Photo 21"></div>
+  <div class="gallery-item" style="background-image: url('images/photo22.jpg');" title="Photo 22"></div>
+  <div class="gallery-item" style="background-image: url('images/photo23.jpg');" title="Photo 23"></div>
+  <div class="gallery-item" style="background-image: url('images/photo24.jpg');" title="Photo 24"></div>
+  <div class="gallery-item" style="background-image: url('images/photo25.jpg');" title="Photo 25"></div>
+  <div class="gallery-item" style="background-image: url('images/photo26.jpg');" title="Photo 26"></div>
+  <div class="gallery-item" style="background-image: url('images/photo27.jpg');" title="Photo 27"></div>
+  <div class="gallery-item" style="background-image: url('images/photo28.jpg');" title="Photo 28"></div>
+  <div class="gallery-item" style="background-image: url('images/photo29.jpg');" title="Photo 29"></div>
+  <div class="gallery-item" style="background-image: url('images/photo30.jpg');" title="Photo 30"></div>
+  <div class="gallery-item" style="background-image: url('images/photo31.jpg');" title="Photo 31"></div>
+  <div class="gallery-item" style="background-image: url('images/photo32.jpg');" title="Photo 32"></div>
+  <div class="gallery-item" style="background-image: url('images/photo33.jpg');" title="Photo 33"></div>
+  <div class="gallery-item" style="background-image: url('images/photo34.jpg');" title="Photo 34"></div>
+  <div class="gallery-item" style="background-image: url('images/photo35.jpg');" title="Photo 35"></div>
+<div class="gallery-item" style="background-image: url('images/photo36.jpg');" title="Photo 36"></div>
+<div class="gallery-item" style="background-image: url('images/photo37.jpg');" title="Photo 37"></div>
+<div class="gallery-item" style="background-image: url('images/photo38.jpg');" title="Photo 38"></div>
+<div class="gallery-item" style="background-image: url('images/photo39.jpg');" title="Photo 39"></div>
+<div class="gallery-item" style="background-image: url('images/photo40.jpg');" title="Photo 40"></div>
+<div class="gallery-item" style="background-image: url('images/photo41.jpg');" title="Photo 41"></div>
+<div class="gallery-item" style="background-image: url('images/photo42.jpg');" title="Photo 42"></div>
+<div class="gallery-item" style="background-image: url('images/photo43.jpg');" title="Photo 43"></div>
+<div class="gallery-item" style="background-image: url('images/photo44.jpg');" title="Photo 44"></div>
+<div class="gallery-item" style="background-image: url('images/photo45.jpg');" title="Photo 45"></div>
+
+  </div>
+</section>
+
+<section id="motion">
+  <h2>Motion</h2>
+  <div class="gallery-grid">
+    <div class="gallery-item" style="background-image: url('images/motion1.jpg');" title="Motion 1"></div>
+    <div class="gallery-item" style="background-image: url('images/motion2.jpg');" title="Motion 2"></div>
+    <div class="gallery-item" style="background-image: url('images/motion3.jpg');" title="Motion 3"></div>
+    <div class="gallery-item" style="background-image: url('images/motion4.jpg');" title="Motion 4"></div>
+  </div>
+</section>
+
+<section id="skills-tools">
+  <h2>Skills & Tools</h2>
+  <div>
+    <h3>Skills</h3>
+    <div class="skills-list">
+      <span class="skill">ReactJS</span>
+      <span class="skill">JavaScript</span>
+      <span class="skill">TypeScript</span>
+      <span class="skill">NextJS</span>
+      <span class="skill">React Native</span>
+      <span class="skill">NodeJS</span>
+      <span class="skill">Express</span>
+      <span class="skill">MongoDB</span>
+      <span class="skill">Firebase</span>
+      <span class="skill">TailwindCSS</span>
+      <span class="skill">Sass</span>
+      <span class="skill">CSS3</span>
+      <span class="skill">HTML5</span>
+      <span class="skill">Figma</span>
+      <span class="skill">Photoshop</span>
+      <span class="skill">Adobe Premiere</span>
+    </div>
+  </div>
+  <div style="margin-top:1.5rem;">
+    <h3>Tools</h3>
+    <div class="tools-list">
+      <span class="tool">Git</span>
+      <span class="tool">GitHub</span>
+      <span class="tool">VS Code</span>
+      <span class="tool">Postman</span>
+      <span class="tool">Docker</span>
+      <span class="tool">Jira</span>
+      <span class="tool">Slack</span>
+      <span class="tool">Notion</span>
+      <span class="tool">Vercel</span>
+      <span class="tool">Netlify</span>
+      <span class="tool">Expo</span>
+    </div>
+  </div>
+</section>
+
+<section id="certifications">
+  <h2>Certifications</h2>
+  <ul class="certifications-list">
+    <li>Front-End Development Certification, freeCodeCamp</li>
+    <li>React JS Course, Scrimba</li>
+    <li>Advanced CSS and Sass, Udemy</li>
+    <li>Google UX Design Professional Certificate</li>
+    <li>Microsoft Power Platform Fundamentals</li>
+  </ul>
+</section>
+
+<footer>
+  &copy; 2025 Koku Dey. All rights reserved.
+</footer>
+
+<script>
+  // Animate sections on scroll
+  function revealOnScroll() {
+    document.querySelectorAll('section').forEach(section => {
+      const top = section.getBoundingClientRect().top;
+      if (top < window.innerHeight - 100) {
+        section.classList.add('visible');
+      }
+    });
+  }
+  window.addEventListener('scroll', revealOnScroll);
+  window.addEventListener('load', revealOnScroll);
+</script>
+
+</body>
+</html>
