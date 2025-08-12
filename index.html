@@ -523,143 +523,87 @@
 
 <section id="motion">
   <h2>Motion</h2>
-  <div class="gallery-item" style="padding:56.25% 0 0 0; position:relative;" title="Gifty + Frederick: Traditional Marriage">
-  <iframe
-    id="vimeo-video"
-    src="https://player.vimeo.com/video/205630007?muted=1&background=0&autopause=0"
-    frameborder="0"
-    allow="autoplay; fullscreen; picture-in-picture"
-    allowfullscreen
-    style="position:absolute;top:0;left:0;width:100%;height:100%;"
-    title="Gifty + Frederick: Traditional Marriage"
-  ></iframe>
-</div>
-<script src="https://player.vimeo.com/api/player.js"></script>
-  <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const iframe = document.getElementById('vimeo-video');
-    const player = new Vimeo.Player(iframe);
+  <div class="gallery-grid">
+    <!-- YouTube Videos -->
+    <div class="gallery-item youtube-video" style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden;" title="Asante - Making of Kotoo Line ft. Enam | Ghana Music">
+      <iframe
+        id="youtube-video-1"
+        src="https://www.youtube.com/embed/zTePncJK7jA?enablejsapi=1&origin=https://your-domain.com"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+        style="position:absolute; top:0; left:0; width:100%; height:100%;"
+        title="Asante - Making of Kotoo Line ft. Enam | Ghana Music"
+      ></iframe>
+    </div>
 
-    const container = iframe.parentElement;
+    <div class="gallery-item youtube-video" style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden;" title="Shatta Wale and Ebony recording session">
+      <iframe
+        id="youtube-video-2"
+        src="https://www.youtube.com/embed/CKRZYimMwy4?enablejsapi=1&origin=https://your-domain.com"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+        style="position:absolute; top:0; left:0; width:100%; height:100%;"
+        title="Shatta Wale and Ebony recording session"
+      ></iframe>
+    </div>
 
-    container.addEventListener('mouseenter', () => {
-      player.play().catch(e => console.log('Play error:', e.name));
-    });
+    <div class="gallery-item youtube-video" style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden;" title="KOD'S Nineteen57 Rhythms On Da Runway' 17">
+      <iframe
+        id="youtube-video-3"
+        src="https://www.youtube.com/embed/agjMzM8gu6k?enablejsapi=1&origin=https://your-domain.com"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+        style="position:absolute; top:0; left:0; width:100%; height:100%;"
+        title="KOD'S Nineteen57 Rhythms On Da Runway' 17"
+      ></iframe>
+    </div>
 
-    container.addEventListener('mouseleave', () => {
-      player.pause();
-    });
-  });
-</script>
-  
-    <div class="gallery-item youtube-video" title="Asante - Making of Kotoo Line ft. Enam" style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden;">
-  <iframe
-    id="youtube-video"
-    src="https://www.youtube.com/embed/zTePncJK7jA?enablejsapi=1&origin=https://kokudey-dev.github.io/portfolio"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    allowfullscreen
-    style="position:absolute; top:0; left:0; width:100%; height:100%;"
-    title="Asante - Making of Kotoo Line ft. Enam"
-  ></iframe>
-</div>
-  <script src="https://www.youtube.com/iframe_api"></script>
-  <script>
-  let player;
+    <div class="gallery-item youtube-video" style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden;" title="4th Video Title">
+      <iframe
+        id="youtube-video-4"
+        src="https://www.youtube.com/embed/CKRZYimMwy4?enablejsapi=1&origin=https://your-domain.com"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+        style="position:absolute; top:0; left:0; width:100%; height:100%;"
+        title="4th Video Title"
+      ></iframe>
+    </div>
+    
+    <div class="gallery-item" style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden;" title="Gifty + Frederick: Traditional Marriage">
+      <iframe
+        src="https://player.vimeo.com/video/205630007?badge=0&autopause=0&player_id=0&app_id=58479"
+        frameborder="0"
+        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        style="position:absolute; top:0; left:0; width:100%; height:100%;"
+        title="Gifty + Frederick: Traditional Marriage"
+      ></iframe>
+    </div>
+    -->
+  </div>
+</section>
 
-  function onYouTubeIframeAPIReady() {
-    player = new YT.Player('youtube-video', {
-      events: {
-        'onReady': onPlayerReady
-      }
-    });
-  }
-
-  function onPlayerReady(event) {
-    const container = document.querySelector('.youtube-video');
-
-    container.addEventListener('mouseenter', () => {
-      player.playVideo();
-    });
-
-    container.addEventListener('mouseleave', () => {
-      player.pauseVideo();
-    });
-  }
-</script>
-    <div class="gallery-item youtube-video" title="Shatta Wale and Ebony recording session" style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden;">
-  <iframe
-    id="youtube-video-3"
-    src="https://www.youtube.com/embed/CKRZYimMwy4?enablejsapi=1&origin=https://kokudey-dev.github.io/portfolio"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    allowfullscreen
-    style="position:absolute; top:0; left:0; width:100%; height:100%;"
-    title="Shatta Wale and Ebony recording session"
-  ></iframe>
-</div>
-  <script src="https://www.youtube.com/iframe_api"></script>
-<script>
-  let player;
-
-  function onYouTubeIframeAPIReady() {
-    player = new YT.Player('youtube-video', {
-      events: {
-        'onReady': onPlayerReady
-      }
-    });
-  }
-
-  function onPlayerReady(event) {
-    const container = document.querySelector('.youtube-video');
-
-    container.addEventListener('mouseenter', () => {
-      player.playVideo();
-    });
-
-    container.addEventListener('mouseleave', () => {
-      player.pauseVideo();
-    });
-  }
-</script>
-
-    <div class="gallery-item youtube-video" title="KOD'S Nineteen57 Rhythms On Da Runway' 17" style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden;">
-  <iframe
-    id="youtube-video-4"
-    src="https://www.youtube.com/embed/agjMzM8gu6k?enablejsapi=1&origin=https://kokudey-dev.github.io/portfolio"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    allowfullscreen
-    style="position:absolute; top:0; left:0; width:100%; height:100%;"
-    title="KOD'S Nineteen57 Rhythms On Da Runway' 17"
-  ></iframe>
-</div>
- <script src="https://www.youtube.com/iframe_api"></script>
+<script src="https://www.youtube.com/iframe_api"></script>
 <script>
   const players = {};
 
   function onYouTubeIframeAPIReady() {
-    const iframes = document.querySelectorAll('.youtube-video iframe');
-
-    iframes.forEach(iframe => {
-      const id = iframe.id;
-      players[id] = new YT.Player(id, {
+    document.querySelectorAll('.youtube-video iframe').forEach(iframe => {
+      players[iframe.id] = new YT.Player(iframe.id, {
         events: {
-          'onReady': event => setupHover(event.target)
+          onReady: event => {
+            const player = event.target;
+            const container = iframe.parentElement;
+
+            container.addEventListener('mouseenter', () => player.playVideo());
+            container.addEventListener('mouseleave', () => player.pauseVideo());
+          }
         }
       });
-    });
-  }
-
-  function setupHover(player) {
-    const container = player.getIframe().parentElement;
-
-    container.addEventListener('mouseenter', () => {
-      player.playVideo();
-    });
-
-    container.addEventListener('mouseleave', () => {
-      player.pauseVideo();
     });
   }
 </script>
@@ -738,6 +682,7 @@
 
 </body>
 </html>
+
 
 
 
