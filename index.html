@@ -523,11 +523,34 @@
 
 <section id="motion">
   <h2>Motion</h2>
-  <div class="gallery-grid">
-   <div style="padding:56.25% 0 0 0;position:relative;">
-  <iframe src="https://player.vimeo.com/video/205630007?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Gifty + Frederick: Traditional Marriage"></iframe>
+  <div class="gallery-item" style="padding:56.25% 0 0 0; position:relative;" title="Gifty + Frederick: Traditional Marriage">
+  <iframe
+    id="vimeo-video"
+    src="https://player.vimeo.com/video/205630007?muted=1&background=0&autopause=0"
+    frameborder="0"
+    allow="autoplay; fullscreen; picture-in-picture"
+    allowfullscreen
+    style="position:absolute;top:0;left:0;width:100%;height:100%;"
+    title="Gifty + Frederick: Traditional Marriage"
+  ></iframe>
 </div>
 <script src="https://player.vimeo.com/api/player.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const iframe = document.getElementById('vimeo-video');
+    const player = new Vimeo.Player(iframe);
+
+    const container = iframe.parentElement;
+
+    container.addEventListener('mouseenter', () => {
+      player.play().catch(e => console.log('Play error:', e.name));
+    });
+
+    container.addEventListener('mouseleave', () => {
+      player.pause();
+    });
+  });
+</script>
     <div class="gallery-item" style="background-image: url('images/motion2.jpg');" title="Motion 2"></div>
     <div class="gallery-item" style="background-image: url('images/motion3.jpg');" title="Motion 3"></div>
     <div class="gallery-item" style="background-image: url('images/motion4.jpg');" title="Motion 4"></div>
@@ -606,6 +629,7 @@
 
 </body>
 </html>
+
 
 
 
