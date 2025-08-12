@@ -587,7 +587,42 @@
     });
   }
 </script>
-    <div class="gallery-item" style="background-image: url('images/motion3.jpg');" title="Motion 3"></div>
+    <div class="gallery-item youtube-video" title="Shatta Wale and Ebony recording session" style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden;">
+  <iframe
+    id="youtube-video-3"
+    src="https://www.youtube.com/embed/CKRZYimMwy4?enablejsapi=1&origin=https://kokudey-dev.github.io/portfolio"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen
+    style="position:absolute; top:0; left:0; width:100%; height:100%;"
+    title="Shatta Wale and Ebony recording session"
+  ></iframe>
+</div>
+  <script src="https://www.youtube.com/iframe_api"></script>
+<script>
+  let player;
+
+  function onYouTubeIframeAPIReady() {
+    player = new YT.Player('youtube-video', {
+      events: {
+        'onReady': onPlayerReady
+      }
+    });
+  }
+
+  function onPlayerReady(event) {
+    const container = document.querySelector('.youtube-video');
+
+    container.addEventListener('mouseenter', () => {
+      player.playVideo();
+    });
+
+    container.addEventListener('mouseleave', () => {
+      player.pauseVideo();
+    });
+  }
+</script>
+
     <div class="gallery-item" style="background-image: url('images/motion4.jpg');" title="Motion 4"></div>
   </div>
 </section>
@@ -664,6 +699,7 @@
 
 </body>
 </html>
+
 
 
 
