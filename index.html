@@ -711,6 +711,20 @@
   &copy; 2025 Koku Dey. All rights reserved.
 </footer>
 
+  <script>
+  // Animate sections on scroll
+  function revealOnScroll() {
+    document.querySelectorAll('section.animated-section, section').forEach(section => {
+      const top = section.getBoundingClientRect().top;
+      if (top < window.innerHeight - 100) {
+        section.classList.add('visible');
+      }
+    });
+  }
+  window.addEventListener('scroll', revealOnScroll);
+  window.addEventListener('load', revealOnScroll);
+</script>
+  
 <script>
   // Animate sections on scroll
   function revealOnScroll() {
@@ -727,6 +741,7 @@
 
 </body>
 </html>
+
 
 
 
