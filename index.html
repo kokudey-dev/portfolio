@@ -150,65 +150,34 @@
       background: #007acc;
       color: #fff;
     }
-  #hero {
+ .hero-video {
   position: relative;
-  width: 100%;
   height: 100vh; /* full viewport height */
   overflow: hidden;
-  color: #eee;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   text-align: center;
+  color: #eee;
 }
 
-.hero-video {
+.hero-video video {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* makes video cover entire section */
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -1;
   transform: translate(-50%, -50%);
-  z-index: 0;
+  object-fit: cover;
 }
 
-.hero-content {
-  position: relative; /* sits above video */
+.hero-overlay {
+  position: relative;
   z-index: 1;
-  max-width: 900px;
-  padding: 0 1rem;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
-.hero-content h1 {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 3rem;
-  margin-bottom: 0.5rem;
-}
-
-.hero-content p {
-  font-family: 'Poppins', sans-serif;
-  font-size: 1.2rem;
-  color: #ccc;
-  margin-bottom: 1.5rem;
-}
-
-.hero-content a {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600;
-  text-decoration: none;
-  color: #007acc;
-  border: 2px solid #007acc;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  transition: 0.3s;
-}
-
-.hero-content a:hover {
-  background-color: #007acc;
-  color: #fff;
-}
-    
    /* About Section */
     #about {
       max-width: 900px;
@@ -952,6 +921,7 @@
   
 </body>
 </html>
+
 
 
 
