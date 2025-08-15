@@ -150,6 +150,65 @@
       background: #007acc;
       color: #fff;
     }
+   .hero-video {
+  position: relative;
+  height: 100vh; /* full viewport height */
+  overflow: hidden;
+  text-align: center;
+  color: #eee;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.hero-video video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -1;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+}
+
+.hero-overlay {
+  position: relative;
+  z-index: 1;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.hero-overlay h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.hero-overlay p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2rem;
+  color: #ccc;
+  margin-bottom: 1.5rem;
+}
+
+.hero-overlay a {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  text-decoration: none;
+  color: #007acc;
+  border: 2px solid #007acc;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: all 0.3s;
+}
+
+.hero-overlay a:hover {
+  background-color: #007acc;
+  color: #fff;
+}
     
    /* About Section */
     #about {
@@ -503,6 +562,14 @@
   opacity:0;
   transform:translateY(50px);
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;">
+
+  <section id="hero" class="hero-video">
+  <video autoplay muted loop playsinline>
+    <source src="videos/hero-bg.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+  <div class="hero-overlay">
+    </div>
     
   <h1 style="font-family:'Bebas Neue', sans-serif; font-size:3rem; margin-bottom:0.5rem;">
     Welcome!
@@ -868,9 +935,25 @@
     });
   });
 </script>
+<script>
+  // Animate hero and other sections on scroll
+  function revealOnScroll() {
+    document.querySelectorAll('.animated-section').forEach(section => {
+      const top = section.getBoundingClientRect().top;
+      if (top < window.innerHeight - 100) {
+        section.style.opacity = 1;
+        section.style.transform = 'translateY(0)';
+      }
+    });
+  }
+
+  window.addEventListener('scroll', revealOnScroll);
+  window.addEventListener('load', revealOnScroll);
+</script>    
   
 </body>
 </html>
+
 
 
 
