@@ -150,51 +150,50 @@
       background: #007acc;
       color: #fff;
     }
-   .hero-video {
+  #hero {
   position: relative;
+  width: 100%;
   height: 100vh; /* full viewport height */
   overflow: hidden;
-  text-align: center;
   color: #eee;
-  opacity: 0;
-  transform: translateY(50px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
-.hero-video video {
+.hero-video {
   position: absolute;
   top: 50%;
   left: 50%;
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  z-index: -1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* makes video cover entire section */
   transform: translate(-50%, -50%);
-  object-fit: cover;
+  z-index: 0;
 }
 
-.hero-overlay {
-  position: relative;
+.hero-content {
+  position: relative; /* sits above video */
   z-index: 1;
-  top: 50%;
-  transform: translateY(-50%);
+  max-width: 900px;
+  padding: 0 1rem;
 }
 
-.hero-overlay h1 {
+.hero-content h1 {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 3rem;
   margin-bottom: 0.5rem;
 }
 
-.hero-overlay p {
+.hero-content p {
   font-family: 'Poppins', sans-serif;
   font-size: 1.2rem;
   color: #ccc;
   margin-bottom: 1.5rem;
 }
 
-.hero-overlay a {
+.hero-content a {
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
   text-decoration: none;
@@ -202,10 +201,10 @@
   border: 2px solid #007acc;
   padding: 0.5rem 1rem;
   border-radius: 4px;
-  transition: all 0.3s;
+  transition: 0.3s;
 }
 
-.hero-overlay a:hover {
+.hero-content a:hover {
   background-color: #007acc;
   color: #fff;
 }
@@ -953,6 +952,7 @@
   
 </body>
 </html>
+
 
 
 
