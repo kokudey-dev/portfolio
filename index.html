@@ -280,59 +280,86 @@ section p {
       transform: translateY(0);
     }
     
-    /* Projects grid for Mobile Apps */
-    #mobile-apps .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-      gap: 1.8rem;
-    }
-    .project-card {
-      background: black;
-      border-radius: 6px;
-      box-shadow: 0 2px 6px rgb(0 0 0 / 0.1);
-      padding: 1rem;
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.2s ease;
-      cursor: pointer;
-    }
-    .project-card:hover {
-      transform: scale(1.2);
-      box-shadow: 0 4px 12px rgb(0 0 0 / 0.15);
-      z-index: 10;
-    }
-    .project-thumb {
-  width: 140%;
-  aspect-ratio: 1/1;
-  background-size: cover;
-  background-position: center;
-  border-radius: 6px;
-  margin-bottom: 1rem;
-}
-.gallery-item {
-  width 100%;
-  aspect-ratio: 1/1;
-  background-size: cover;
-  background-position: center;
-  border-radius: 6px;
-  margin-bottom: 1rem;
-}
-    .project-card h3 {
-      margin: 0 0 0.3rem 0;
-      font-family: 'Poppins', sans-serif;
-      color: white;
-    }
-    .project-card p {
-      margin: 0 0 0.6rem 0;
-      font-family: 'Open Sans', sans-serif;
-      font-size: 0.5rem;
-      color: #ccc;
-      flex-grow: 1;
-    }
-    #mobile-apps {
-  padding-top: 12rem; /* or however many rems you want below hero */
+    /* Mobile Apps Section */
+#mobile-apps {
+  padding-top: 12rem; /* space below hero */
+  padding-bottom: 6rem;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
+/* Heading for the section */
+#mobile-apps h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2rem; /* adjust as needed */
+  color: #eee;
+  text-align: left; /* left-align instead of center */
+  margin-bottom: 1.5rem;
+}
+
+/* Paragraphs */
+#mobile-apps p {
+  font-family: 'Open Sans', sans-serif; /* your preferred font */
+  font-size: 0.75rem; /* smaller text */
+  color: #ccc;
+  line-height: 1.5;
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+/* Grid of projects */
+#mobile-apps .projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* flexible columns */
+  gap: 1.8rem;
+}
+
+/* Individual project cards */
+.project-card {
+  background: black;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgb(0 0 0 / 0.1);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+/* Hover effect on project cards */
+.project-card:hover {
+  transform: scale(1.05); /* slightly bigger on hover */
+  box-shadow: 0 4px 12px rgb(0 0 0 / 0.15);
+  z-index: 10;
+}
+
+/* Project image or thumbnail */
+.project-thumb, 
+.gallery-item {
+  width: 100%;
+  aspect-ratio: 1/1;
+  background-size: cover;
+  background-position: center;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+/* Project title */
+.project-card h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  color: #fff;
+  margin: 0 0 0.3rem 0;
+}
+
+/* Project description */
+.project-card p {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.75rem; /* small but readable */
+  color: #ccc;
+  line-height: 1.4;
+  flex-grow: 1;
+}
     /* Graphic Design, Photography, Motion sections grid */
     .gallery-grid {
   display: grid;
@@ -976,6 +1003,7 @@ section p {
   
 </body>
 </html>
+
 
 
 
