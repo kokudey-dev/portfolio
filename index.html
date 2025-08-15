@@ -124,7 +124,7 @@
   margin-bottom: 1.5rem;
 }
 
-#hero a {
+.see-more-btn {
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
   text-decoration: none;
@@ -132,12 +132,12 @@
   border: 2px solid #007acc;
   padding: 0.5rem 1rem;
   border-radius: 4px;
-  transition: 0.3s;
+  transition: all 0.3s ease;
 }
 
-#hero a:hover {
-  background: #007acc;
-  color: #fff;
+.see-more-btn:hover {
+  background-color: #007acc;
+  color: #fff; /* ensure text is visible */
 }
     a[href="#about"]:hover {
   background: #007acc;
@@ -165,7 +165,9 @@
       color: #555;
       font-size: 1.1rem;
     }
-
+    #about {
+  padding-top: 4rem;
+}
     /* Projects grid for Mobile Apps */
     #mobile-apps .projects {
       display: grid;
@@ -447,10 +449,10 @@
   transform:translateY(50px);
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;">
     
-  <h1 style="font-family:'Bebas Neue', sans-serif; font-size:3rem; margin-bottom:0.5rem;">
+  <h1 style="font-family:'Poppins', sans-serif; font-size:3rem; margin-bottom:0.5rem;">
     Welcome to Melvin Koku Dey's Portfolio
   </h1>
-  <p style="font-family:'Poppins', sans-serif; font-size:1.2rem; color:#ccc; margin-bottom:1.5rem;">
+  <p style="font-family:'Bebas Nueue', sans-serif; font-size:1.2rem; color:#ccc; margin-bottom:1.5rem;">
     Crafting apps, designs, and experiences that solve real problems.
   </p>
   <a href="#about" style="
@@ -780,9 +782,40 @@
   window.addEventListener('scroll', revealOnScroll);
   window.addEventListener('load', revealOnScroll);
 </script>
+<script>
+  // Your scroll offset JS
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      const offset = 60; // height of your navbar
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = target.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
 
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    });
+  });
+</script>
+  <script>
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+  
 </body>
 </html>
+
 
 
 
