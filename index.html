@@ -150,31 +150,35 @@
       background: #007acc;
       color: #fff;
     }
- .hero-video {
+.hero-video {
   position: relative;
-  height: 100vh; /* full viewport height */
+  height: 100vh; /* full screen height */
   overflow: hidden;
-  text-align: center;
-  color: #eee;
 }
 
 .hero-video video {
   position: absolute;
-  top: 0%;
-  left: 0%;
-  min-width: 100%;
-  min-height: 100%;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1;
   object-fit: cover;
 }
 
 .hero-overlay {
   position: relative;
+  z-index: 2;
+  color: #eee;
+  text-align: center;
+  padding: 6rem 1rem;
+}
+
+.hero-video::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.5); /* dark overlay */
   z-index: 1;
-  top: 50%;
-  transform: translateY(-50%);
 }
 
    /* About Section */
@@ -920,6 +924,7 @@
   
 </body>
 </html>
+
 
 
 
