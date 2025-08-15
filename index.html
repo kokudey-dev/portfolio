@@ -101,32 +101,48 @@
       opacity: 1;
       transform: translateY(0);
     }
-    #homepage {
-  color: #eee;            /* ensures text is visible */
-  padding: 100px 1rem 50px; /* spacing from navbar and bottom */
+    #hero {
   text-align: center;
+  padding: 6rem 1rem;
+  background: black;
+  color: #eee;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-#homepage h1 {
+#hero h1 {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 2.5rem;
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
 }
 
-#homepage h3 {
+#hero p {
   font-family: 'Poppins', sans-serif;
-  font-weight: 400;
   font-size: 1.2rem;
-  color: #ccc; /* slightly lighter for contrast */
+  color: #ccc;
+  margin-bottom: 1.5rem;
 }
 
-#homepage p {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 1rem;
-  color: #aaa;
-  max-width: 800px;
-  margin: 0 auto;
+#hero a {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  text-decoration: none;
+  color: #007acc;
+  border: 2px solid #007acc;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: 0.3s;
 }
 
+#hero a:hover {
+  background: #007acc;
+  color: #fff;
+}
+    a[href="#about"]:hover {
+  background: #007acc;
+  color: #fff;
+}
     /* About Section */
     #about h1 {
       text-align: center;
@@ -738,12 +754,12 @@
 </footer>
 
   <script>
-  // Animate sections on scroll
   function revealOnScroll() {
-    document.querySelectorAll('section.animated-section, section').forEach(section => {
+    document.querySelectorAll('.animated-section, section').forEach(section => {
       const top = section.getBoundingClientRect().top;
       if (top < window.innerHeight - 100) {
-        section.classList.add('visible');
+        section.style.opacity = 1;
+        section.style.transform = 'translateY(0)';
       }
     });
   }
@@ -767,6 +783,7 @@
 
 </body>
 </html>
+
 
 
 
