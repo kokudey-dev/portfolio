@@ -90,8 +90,8 @@
 
     section {
   max-width: 900px;
-  margin: 3rem auto;
-  padding: 12rem 10rem 10rem 10rem; /* top padding increased to 4rem */
+  margin: 3rem auto; /* spacing between sections */
+  padding: 0 1rem;   /* horizontal padding only */
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
@@ -174,6 +174,10 @@
       color: #555;
       font-size: 1.1rem;
     }
+#about {
+  padding-top: 12rem; /* or however many rems you want below hero */
+}
+    
     /* Projects grid for Mobile Apps */
     #mobile-apps .projects {
       display: grid;
@@ -223,6 +227,9 @@
       color: #ccc;
       flex-grow: 1;
     }
+    #mobile-apps {
+  padding-top: 12rem; /* or however many rems you want below hero */
+}
 
     /* Graphic Design, Photography, Motion sections grid */
     .gallery-grid {
@@ -244,12 +251,16 @@
   aspect-ratio: 1 / 1; /* square */
   height: auto; /* let aspect-ratio control height */
 }
-
+ #graphic-design {
+  padding-top: 12rem; /* or however many rems you want below hero */
+}
 #photography .gallery-item {
   aspect-ratio: 4 / 5; /* portrait */
   height: auto;
 }
-
+#photography {
+  padding-top: 12rem; /* or however many rems you want below hero */
+}
 #motion .gallery-item {
   aspect-ratio: 16 / 9; /* landscape */
   height: auto;
@@ -267,6 +278,9 @@
       box-shadow: 0 4px 10px rgb(0 0 0 / 0.15);
       z-index: 10;
     }
+    #motion {
+  padding-top: 12rem; /* or however many rems you want below hero */
+}
 
     /* Skills list */
     .skills-list {
